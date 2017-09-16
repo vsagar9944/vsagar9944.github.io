@@ -1,0 +1,16 @@
+<div layout="row" layout-fill>
+    <md-sidenav md-component-id="left-sidenav" class="md-sidenav-left md-whiteframe-z2" ui-view="leftsidenav"></md-sidenav>
+    <div class="" layout="column" flex layout-fill>
+        <md-toolbar class="md-whiteframe-z1" ui-view="toolbar"></md-toolbar>
+        <md-content class="border-red" layout-fill layout flex ui-view="default-module"></md-content>
+        <footer>
+            <md-toolbar class="md-scroll-shrink">
+                <div layout="row" layout-align="center center" flex>
+                    <div class="" flexui-view="footer"></div>
+                </div>
+            </md-toolbar>
+        </footer>
+        <div class="" ng-show="stateController.showLoader" layout="column" ui-view="loader"></div>
+    </div>
+    <md-sidenav layout layout-fill class="md-sidenav-right md-whiteframe-z2" md-component-id="right-sidenav" ui-view="rightSidenav"></md-sidenav>
+</div>

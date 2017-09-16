@@ -1,0 +1,7 @@
+<a href="javascript:void(0);" title="{{::vm.item.name}}" ng-class="{ 'active': vm.item.active }" ng-click="vm.openLink(vm.item)">
+    <img ng-src="{{::vm.item.image}}" alt="{{::vm.item.name}}" class="module-menu-image">
+
+    <!-- <md-icon md-svg-icon="app/assets/css/icons/angularjs/angularjs-plain.svg" style="color: #0F0;" aria-label="Alarm Icon"></md-icon> -->
+    <!-- <i class="cbp-ig-icon devicon-angularjs-plain"></i> -->
+    <span class="module-menu-title" translate>{{::vm.item.shortname}}</span>
+</a>
