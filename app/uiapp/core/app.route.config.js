@@ -64,6 +64,7 @@
                 }
             })
             .state('app.default',{
+				url:'/default',
                 views:{
                     'default-module':{
                         templateUrl:"app/uiapp/default/views/default.view.html",

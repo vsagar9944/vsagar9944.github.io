@@ -18,6 +18,7 @@
                 }
             }).
             state('app.dashboard.main',{
+				url:'dashboard',
                 templateUrl:'app/uiapp/dashboard/views/dashboard.view.html',
                 controller:'MainDashboardController'
             });
