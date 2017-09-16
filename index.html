@@ -1,51 +1,74 @@
+
 <!DOCTYPE html>
-<html ng-app="app">
+<html>
 
 <head>
     <meta charset="utf-8">
-    <title>AngularJs App with material</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.css"/>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css"/>
+    <title>Nodejsplus</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
 </head>
 
 <body>
-    <div ui-view="root" layout="column" layout-fill>
-
+   Updated content 1ggf dgjj gd
+    <div id="App1" ng-app="shoppingCart" ng-controller="ShoppingCartController">
+        <h1>Your order</h1>
+        <div ng-repeat="item in items">
+            <span>{{item.product_name}}</span>
+            <span>{{item.price | currency}}</span>
+            <button ng-click="remove($index);">Remove</button>
+        </div>
     </div>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBAxL0C0ZHdeVgnd6HmSTqUVYsRHuc1mIs&sensor=false"></script>
-    <script src="app/assets/library/leaflet/dist/leaflet-src.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-aria.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.7.1/angular-local-storage.js" charset="utf-8"></script>
-    <script src="app/assets/library/oclazyload/dist/ocLazyLoad.js" charset="utf-8"></script>
 
-    <script src="app/assets/library/angular-simple-logger/dist/angular-simple-logger.js"></script>
-    <script src="app/assets/library/ui-leaflet/dist/ui-leaflet.js"></script>
-    <script src="app/assets/library/googlemutant/Leaflet.GoogleMutant.js"></script>
-
-    <script src="app/uiapp/core/app.module.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/providers/layout.provider.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/app-menu.config.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/app.route.config.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/app.run.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/controllers/app-main.controller.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/leftsidenav/controllers/left-sidenav.controller.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/toolbar/controllers/toolbar.controller.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/module-menu/controllers/module-menu.controller.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/module-menu/providers/modulemenu.provider.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/module-menu/directives/app-module-menu.directives.js" charset="utf-8"></script>
-    <script src="app/uiapp/core/module-menu/directives/app-module-menu-item.directive.js" charset="utf-8"></script>
-
-    <script src="app/uiapp/default/services/base-map.service.js" charset="utf-8"></script>
-    <script src="app/uiapp/default/controllers/map-layer.controllers.js" charset="utf-8"></script>
-
-    <!-- <script src="app/uiapp/dashboard/dashboard.module.js" charset="utf-8"></script>
-    <script src="app/uiapp/dashboard/dashboard.route.config.js" charset="utf-8"></script>
-    <script src="app/uiapp/dashboard/dashboard.run.js" charset="utf-8"></script> -->
+    <div id="App2" ng-app="namesList" ng-controller="NamesController">
+        <h1>List of Names</h1>
+        <div ng-repeat="_name in names">
+            <p>{{_name.username}}</p>
+        </div>
+    </div>
+    <div id="App3" ng-app="countList" ng-controller="CountController">
+        <h1>List of Names</h1>
+        <div ng-repeat="i in counts">
+            <p>{{i}}</p>
+        </div>
+    </div>
 </body>
+<script type="text/javascript">
+    var shoppingCartModule = angular.module("shoppingCart", [])
+    shoppingCartModule.controller("ShoppingCartController",
+        function($scope) {
+            $scope.items = [{
+                product_name: "Product 1",
+                price: 50
+            }, {
+                product_name: "Product 2",
+                price: 20
+            }, {
+                product_name: "Product 3",
+                price: 180
+            }];
+            $scope.remove = function(index) {
+                $scope.items.splice(index, 1);
+            }
+        }
+    );
+    var namesModule = angular.module("namesList", [])
+    namesModule.controller("NamesController",
+        function($scope) {
+            $scope.names = [{
+                username: "Nitin"
+            }, {
+                username: "Mukesh"
+            }];
+        }
+    );
+    var namesModule = angular.module("countList", [])
+    namesModule.controller("CountController",
+        function($scope) {
+            $scope.counts = [1,2,3,4,5];
+        }
+    );
+    angular.bootstrap(document.getElementById("App2"), ['namesList']);
+    angular.bootstrap(document.getElementById("App3"), ['countList']);
+</script>
+
 </html>
